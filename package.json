@@ -1,0 +1,34 @@
+{
+  "name": "lansrry-loja-3d",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node --env-file-if-exists=.env scripts/dev.mjs",
+    "start": "node --env-file-if-exists=.env scripts/dev.mjs",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run build && npm run build:company",
+    "test": "node tests/runtime.mjs && node tests/security.mjs && node tests/company.mjs && node tests/payments.mjs && node tests/continuation.mjs && node tests/analytics.mjs",
+    "build:company": "node scripts/build-company.mjs",
+    "check:company": "node scripts/check-company.mjs",
+    "package:handoff": "node scripts/package-handoff.mjs",
+    "verify:handoff": "node scripts/verify-handoff.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.31.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "esbuild": "0.28.2",
+    "typescript": "6.0.3",
+    "wrangler": "4.147.0"
+  }
+}

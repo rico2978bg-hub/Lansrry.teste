@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Every mutation is performed through the validated server API.
+    // Direct browser writes are denied even when a user is authenticated.
+    match /products/{product} { allow read: if true; allow write: if false; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
